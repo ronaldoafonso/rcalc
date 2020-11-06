@@ -4,25 +4,25 @@ import rcalc
 
 
 @mark.add
-def test_add():
-    assert 5 == rcalc.add(2, 3)
-    assert 0 == rcalc.add(5, -5)
-    assert 7 == rcalc.add(5, 2)
+def test_add(gen_operands):
+    results = (4, 9, 5, 2)
+    for result, operands in zip(results, gen_operands):
+        assert result == rcalc.add(*(operands))
 
 @mark.sub
-def test_sub():
-    assert 1 == rcalc.sub(3, 2)
-    assert 3 == rcalc.sub(8, 5)
-    assert -1 == rcalc.sub(2, 3)
+def test_sub(gen_operands):
+    results = (-2, 1, -1, 0)
+    for result, operands in zip(results, gen_operands):
+        assert result == rcalc.sub(*(operands))
 
 @mark.multi
-def test_multi():
-    assert 4 == rcalc.multi(2, 2)
-    assert 10 == rcalc.multi(5, 2)
-    assert 9 == rcalc.multi(3, 3)
+def test_multi(gen_operands):
+    results = (3, 20, 6, 1)
+    for result, operands in zip(results, gen_operands):
+        assert result == rcalc.multi(*(operands))
 
 @mark.div
-def test_div():
-    assert 2 == rcalc.div(10, 5)
-    assert 0 == rcalc.div(0, 5)
-    assert 3 == rcalc.div(9, 3)
+def test_div(gen_operands):
+    results = (0, 1, 0, 1)
+    for result, operands in zip(results, gen_operands):
+        assert result == rcalc.div(*(operands))
